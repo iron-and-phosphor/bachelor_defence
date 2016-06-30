@@ -5,8 +5,8 @@
    \framesubtitle{In this presentation}
 	\begin{itemize}
 	\item Introduction 
-	\item Research questions
-	\item Sub question
+	\item Research question
+	\item Sub questions
 	\item Results 
 	\item Conclusion 
 	\item Demo
@@ -44,20 +44,15 @@
 \frame{
 	\frametitle{\subsecname}
 	\begin{itemize}
-	\item Syntactic propeties question
+	\item Syntactic properties question
 	\item Parser question
 	\item Type system question
 	\end{itemize}
 }
-\subsection{Syntactic propeties question}
+\subsection{Syntactic properties question}
 \frame{
 	\frametitle{\subsecname}
 	What properties does MC have that the front-end needs to process?
-	\begin{itemize}
-	\item Few keywords
-	\item Every definition has a declaration 
-	\item Features can be devided in groups
-	\end{itemize}
 }
 
 \frame{
@@ -65,6 +60,7 @@
 	\framesubtitle{Keywords}
 	\begin{multicols*}{2}
 	MC
+	\begin{multicols*}{2}
 	\begin{itemize}
 	\item Func
 	\item Data
@@ -76,34 +72,33 @@
 	\item import
 	\item inherit
 	\item Module
-	\item (\textbackslash  ...code...  )
+	\item (\textbackslash \space )
 	\end{itemize}
+	\end{multicols*}
 	\columnbreak
 	C\#
 
-	abstract ; as ; base ; bool ;
-    break ; byte ; case ; catch ; char ; checked ; class ; const ;
-    continue ; decimal ; default ; delegate ; do ; double ; else ;
-    enum ; event ; explicit ; extern ; false ; finally ; fixed ; 
-    float ; for ; foreach ; goto ; if ; implicit ; in ; int ; 
-    interface ; internal ; is ; lock ; long ; namespace ; new ;
-    null ; object ; operator ; out ; override ; params ; private ;
-    protected ; public ; readonly ; ref ; return ; sbyte ; sealed ;
-    short ; sizeof ; stackalloc ; static ; string ; struct ; 
-    switch ; this ; throw ; true ; try ; typeof ; uint ; ulong ; 
-    unchecked ; unsafe ; ushort ; using ; virtual ; void ; 
-    volatile ; while
+	abstract as base bool
+    break byte case catch char checked class const
+    continue decimal default delegate do double else
+    enum event explicit extern false finally fixed 
+    float for foreach goto if implicit in int 
+    interface internal is lock long namespace new
+    null object operator out override params private
+    protected public readonly ref return sbyte sealed
+    short sizeof stackalloc static string struct 
+    switch this throw true try typeof uint ulong 
+    unchecked unsafe ushort using virtual void 
+    volatile while
     \end{multicols*}
 }
 
 \frame{
 	\frametitle{\subsecname}
-	\framesubtitle{Devided features}
+	\framesubtitle{Divided features}
 	\begin{itemize}
-	\item Data and func
-	\item Dotnet
-	\item lambdas
-	\item TypeAlias
+	\item Data and Func
+	\item .NET
 	\item TypeFunc
 	\item Module
 	\end{itemize}
@@ -119,9 +114,9 @@
 	\frametitle{\subsecname}
 	\framesubtitle{What is a parser}
 	\begin{itemize}
-	\item Takes a sequence of elements
-	\item Builds a data structure
-	\item Detect syntactic errors
+	\item Takes text
+	\item Data structure
+	\item Syntactic errors
 	\end{itemize}
 }
 
@@ -138,7 +133,7 @@
 	\frametitle{\subsecname}
 	\framesubtitle{Parser generator}
 	\begin{itemize}
-	\item Is a program
+	\item Program
 	\item Syntax description -> parser
 	\end{itemize}
 }
@@ -154,7 +149,7 @@
 	\columnbreak
 	Cons
 	\begin{itemize}
-	\item Difficult to generate helpful error messages
+	\item Error messages
 	\end{itemize}
 	\end{multicols*}
 }
@@ -162,58 +157,21 @@
 \frame{
 	\frametitle{\subsecname}
     \framesubtitle{What is a parser monad?}
-    A parser monad iterates over a list and builds a output structure.
-
-    If the parser fails then instead of the context it will return an error.
+    \begin{itemize}
+	\item Takes a list
+	\item Outputs a data structure
+	\item Returns an error when fails
+	\end{itemize}
 }
 
 \frame{
-    \frametitle{\subsecname}
-    \framesubtitle{concat}
-    \begin{multicols*}{3}
-    \begin{enumerate}
-    \item t \item w \item o \item \# \item w \item o \item r \item d \item s \item \#
-    \end{enumerate}
-    \columnbreak
-    ch = get-char
-    concat ch
-    \columnbreak
-    \begin{enumerate}
-    \item two\#words\#
-    \end{enumerate}
-    \end{multicols*}
-}
-\frame{
-    \frametitle{\subsecname}
-    \framesubtitle{check char}
-    \begin{multicols*}{3}
-    \begin{enumerate}
-    \item t \item w \item o \item \# \item w \item o \item r \item d \item s \item \#
-    \end{enumerate}
-    \columnbreak
-    check-char \#
-    \columnbreak
-    \begin{enumerate}
-    \item nope \item nope \item nope \item yep \item nope \item nope \item nope \item nope \item nope \item yep
-    \end{enumerate}
-    \end{multicols*}
-}
-\frame{
-    \frametitle{\subsecname}
-    \framesubtitle{until}
-    \begin{multicols*}{3}
-    \begin{enumerate}
-    \item t \item w \item o \item \# \item w \item o \item r \item d \item s \item \#
-    \end{enumerate}
-    \columnbreak
-    ch = get-char until check-char \#
-
-    concat ch
-    \columnbreak
-    \begin{enumerate}
-    \item two \item words
-    \end{enumerate}
-    \end{multicols*}
+	\frametitle{\subsecname}
+    \framesubtitle{Parser combinators}
+    \begin{itemize}
+	\item Takes parser monads
+	\item Returns a parser monad
+	\item Handles failed parsers
+	\end{itemize}
 }
 
 \frame{
@@ -249,26 +207,18 @@
 
 \frame{
     \frametitle{\subsecname}
-    \framesubtitle{Errors with priority}
-    The error with the highest priority is the one that gets returned.
-    \begin{figure}
-        \includegraphics{error_example}
-    \end{figure}
-}
-\frame{
-    \frametitle{\subsecname}
-    \framesubtitle{parser monad}
+    \framesubtitle{Parser monad}
     \begin{multicols*}{2}
     Pros 
     \begin{itemize}
 	\item Custom error system
-	\item Powerful parser
+	\item Parser combinators
 	\item Easy to maintain and expand	
 	\end{itemize}
 	\columnbreak
 	Cons
 	\begin{itemize}
-	\item Slow setup
+	\item Complex setup
 	\item Slow parsing
 	\end{itemize}
     \end{multicols*}
@@ -277,37 +227,25 @@
 \frame{
     \frametitle{\subsecname}
     \framesubtitle{Strategy}
-    \begin{multicols*}{2}
-    \begin{itemize}
-	\item Data and func
-	\item Dotnet
-	\item lambdas
-	\item TypeAlias
-	\item TypeFunc
-	\item Module
-	\end{itemize}
-	\columnbreak
-	\begin{itemize}
-	\item Minimal type checker    
-	\item DotNet types 
-	\item Type inference 
-	\item Kind support 
-	\item Compile time interpretation    
-	\item Complex inheritance system 
-	\end{itemize}
-	\end{multicols*}
+	\begin{center}
+    \begin{tabular}
+    { l | l | l }
+    \textbf{Feature} & \textbf{Parser modules} & \textbf{Type checker} \\
+    \hline
+    \hline
+	Data and func & \multirow{2}{5cm}{Definitions \& declarations of Func and Data} & Minimal type checker \\
+	\cline{1-1}\cline{3-3}
+	Dotnet & & DotNet types \\
+	\hline
+	\hline
+	TypeFunc & \multirow{2}{5cm}{Definitions \& declarations of TypeFunc and TypeAlias} & Compile time interpretation \\
+	\cline{1-1}\cline{3-3}
+	Module & & Complex inheritance system \\
+	\end{tabular}
+    \end{center}
 }
 
-\frame{
-    \frametitle{\subsecname}
-    \framesubtitle{Modules}
-    \begin{itemize}
-	\item Declarations TypeFunc and Alias
-	\item Definitions TypeFunc and Alias
-	\item Declarations Data and Function
-	\item Definitions Rules    
-	\end{itemize}
-}
+
 \subsection{Type system question}
 \frame{
     \frametitle{\subsecname}
@@ -316,54 +254,50 @@
 
 \frame{
     \frametitle{\subsecname}
+    \framesubtitle{Type system of MC}
+    Needs to:
+    \begin{itemize}
+	\item Compare types and sub types
+	\item Inference types
+	\item Create types
+	\end{itemize}
+}
+
+\frame{
+    \frametitle{\subsecname}
     \framesubtitle{Type checker}
     \begin{itemize}
 	\item Normalized input and output
+	\begin{itemize}
+	\item One representation of program
+	\item Back-end interface
+	\end{itemize}
 	\item Modular
-	\item Separate type checker for run-time and compile time components  
+	\item Runtime and compile time  
 	\end{itemize}
 }
 
+
+\subsection{Change of plans}
 \frame{
     \frametitle{\subsecname}
-    \framesubtitle{Normalization}
     \begin{itemize}
-	\item Smaller type checker
-	\item Less complexity in data structures  
+	\item Request for dependent types
+	\item New type checker
+	\item Incompatible
+	\item New parser
 	\end{itemize}
 }
 
-\frame{
-    \frametitle{\subsecname}
-    \framesubtitle{Modular}
-    Just like the parser
-    \begin{itemize}
-	\item Declarations TypeFunc and Alias
-	\item Definitions TypeFunc and Alias
-	\item Declarations Data and Function
-	\item Definitions Rules    
-	\end{itemize}
-}
+\subsection{Results}
 
 \frame{
     \frametitle{\subsecname}
-    \framesubtitle{Separate type checker for run-time and compile time components}
-    \begin{itemize}
-	\item Helps getting the first prototype working faster
-	\item Extra securety on type checking
-	\end{itemize}
-}
-
-\subsection{Detour with the customer}
-
-\frame{
-    \frametitle{\subsecname}
-    \begin{itemize}
-	\item Request for full Mark 3 compiler
-	\item Will take longer then I have time for
-	\item Customer wants to make a type checker for it
-	\item His type checker is not compatible with the current compiler
-	\item Solution: I make a parser for the customer his type checker
+    \framesubtitle{Requirements}
+ 	\begin{itemize}
+	\item Correct
+	\item Maintainable and expandable
+	\item Descriptive error messages 
 	\end{itemize}
 }
 
@@ -372,10 +306,10 @@
 \frame{
     \frametitle{\subsecname}
     \begin{itemize}
-    \item A parser has been made to process the features of MC
-    \item The parser can give descriptive error messages
-    \item The front-end is designed to be maintainable and expandable
-    \item A type checker was created for the run time features of MC
+    \item Requirements are met
+    \item Working front-end 
+    \item Helped the research team
+    \item Programming industry
     \end{itemize}
 }
 
@@ -383,12 +317,12 @@
 
 \frame{
     \frametitle{\subsecname}
-    The front-end generates a correct data structure for the back-end
+    
 }
 
 \subsection{Questions}
 
 \frame{
     \frametitle{\subsecname}
-
+    ?
 }
