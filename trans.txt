@@ -1,0 +1,10 @@
+1 Hello  i am jarno holstein
+
+2 in this presentation i'll  give introduction 
+talk about research questions 
+
+3 video game development is difficult 
+In order to make the devolopment procces of games easier Casanova was created
+During the development of casanova the research team found the compiler difficult to maintain because of a abcence of higher abstractions
+In order to implement higher abstractions a new language was created: Meta casanova
+During the development of Meta casanova the compiler became difficult to expand.
